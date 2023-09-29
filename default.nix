@@ -14,7 +14,7 @@ in
         overrides = self: super: {
           fourmolu =
             overrideCabal
-              (super.callPackage ./fourmolu-0.13.0.0.nix { })
+              (super.callPackage ./haskell-packages/fourmolu-0.13.0.0.nix { })
               (drv: { doCheck = false; });
         };
       }).fourmolu;
