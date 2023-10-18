@@ -4,11 +4,11 @@ let
   inherit (haskell.lib) justStaticExecutables overrideCabal;
 in
 rec {
-  default = version-0-13-x;
+  default = v0-13-x;
 
-  version-0-13-x = version-0-13-0;
+  v0-13-x = v0-13-0;
 
-  version-0-13-0 = justStaticExecutables
+  v0-13-0 = justStaticExecutables
     (haskell.packages.ghc96.override {
       overrides = self: super: {
         fourmolu =

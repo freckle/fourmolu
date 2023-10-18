@@ -13,7 +13,7 @@ For example, we have:
 
 - `fourmolu.default` -
   If you don't care what version of fourmolu you get
-- `fourmolu.version-0-13-x` -
+- `fourmolu.v0-13-x` -
   If you want major version 0.13 but don't care what minor version
-- `fourmolu.version-0-13-0` -
+- `fourmolu.v0-13-0` -
   If you specifically want minor version 0.13.0
