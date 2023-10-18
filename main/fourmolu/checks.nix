@@ -8,7 +8,7 @@ let
     assertion = "fourmolu is version ${version}";
     expected = writeText "expected" ("fourmolu " + version + "\n");
     actual = runCommand "actual" { nativeBuildInputs = [ fourmolu ]; } ''
-      fourmolu --version
+      fourmolu --version \
         | head -n1 \
         | sed -re 's/^(fourmolu [[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)\.?.*$/\1/' \
         > $out
