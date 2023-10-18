@@ -11,9 +11,9 @@ Packages should generally be aliased in several ways so that each use site
 can choose what level of specificity in the fourmolu version it wants.
 For example, we have:
 
-- `fourmolu.default` -
+- `fourmolu-default` -
   If you don't care what version of fourmolu you get
-- `fourmolu.v0-13-x` -
+- `fourmolu-0-13-x` -
   If you want major version 0.13 but don't care what minor version
-- `fourmolu.v0-13-0` -
+- `fourmolu-0-13-0` -
   If you specifically want minor version 0.13.0
