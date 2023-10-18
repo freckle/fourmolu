@@ -13,11 +13,8 @@
           unstable = import inputs.unstable nixpkgsArgs;
         };
       in
-        {
-          packages = import ./. {
-            inherit (nixpkgs.stable) haskell;
-            inherit (nixpkgs.unstable) all-cabal-hashes;
-          };
-        }
+      {
+        packages = import ./. { inherit nixpkgs; };
+      }
     );
 }
