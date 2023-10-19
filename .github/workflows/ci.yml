@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: main
+  pull_request:
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        runner:
+          - macos-latest
+          - ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v22
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+    - name: Check
+      run: nix flake check ./main
