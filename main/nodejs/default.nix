@@ -1,8 +1,7 @@
-{ nixpkgs }:
+{ inputs, system, ... }:
 let
-  inherit (nixpkgs.stable) symlinkJoin;
+  inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) symlinkJoin;
 in
-
 rec {
   nodejs-default = nodejs-16-x;
   nodejs-16-x = nodejs-16-20-x;
@@ -10,9 +9,9 @@ rec {
 
   nodejs-16-20-0 = (
     let
-      pkgs = nixpkgs.master-2023-05-06;
-      nodejs = pkgs.nodejs_16;
-      yarn = pkgs.yarn.override { inherit nodejs; };
+      nixpkgs = import inputs.nixpkgs-master-2023-05-06 { inherit system; config = { }; };
+      nodejs = nixpkgs.nodejs_16;
+      yarn = nixpkgs.yarn.override { inherit nodejs; };
     in
     symlinkJoin {
       name = "nodejs";
@@ -22,9 +21,15 @@ rec {
 
   nodejs-16-20-1 = (
     let
-      pkgs = nixpkgs.master-2023-07-18;
-      nodejs = pkgs.nodejs_16;
-      yarn = pkgs.yarn.override { inherit nodejs; };
+      nixpkgs = import inputs.nixpkgs-master-2023-07-18 {
+        inherit system; config = {
+        permittedInsecurePackages = [
+          "nodejs-16.20.1"
+        ];
+      };
+      };
+      nodejs = nixpkgs.nodejs_16;
+      yarn = nixpkgs.yarn.override { inherit nodejs; };
     in
     symlinkJoin {
       name = "nodejs";
@@ -34,9 +39,15 @@ rec {
 
   nodejs-16-20-2 = (
     let
-      pkgs = nixpkgs.stable;
-      nodejs = pkgs.nodejs_16;
-      yarn = pkgs.yarn.override { inherit nodejs; };
+      nixpkgs = import inputs.nixpkgs-stable {
+        inherit system; config = {
+        permittedInsecurePackages = [
+          "nodejs-16.20.2"
+        ];
+      };
+      };
+      nodejs = nixpkgs.nodejs_16;
+      yarn = nixpkgs.yarn.override { inherit nodejs; };
     in
     symlinkJoin {
       name = "nodejs";

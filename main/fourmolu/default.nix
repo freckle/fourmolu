@@ -1,4 +1,4 @@
-{ nixpkgs }:
+{ inputs, system, packages, ... }:
 let
   versions = v0-13 // v0-14 // {
     fourmolu-default = versions.fourmolu-0-13-x;
@@ -6,7 +6,8 @@ let
 
   v0-13 =
     let
-      inherit (nixpkgs.stable-2023-07-25) haskell;
+      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 { inherit system; config = { }; };
+      inherit (nixpkgs) haskell;
       inherit (haskell.lib) justStaticExecutables overrideCabal;
     in
     rec {
@@ -35,7 +36,8 @@ let
 
   v0-14 =
     let
-      inherit (nixpkgs.stable) haskell;
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      inherit (nixpkgs) haskell;
       inherit (haskell.lib) justStaticExecutables overrideCabal;
     in
     rec {

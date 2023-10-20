@@ -1,8 +1,9 @@
-{ nixpkgs, packages }:
+{ inputs, system, packages, ... }:
 let
-  inherit (nixpkgs.stable) writeText runCommand;
-  inherit (nixpkgs.stable.lib.attrsets) recursiveUpdate;
-  inherit (nixpkgs.stable.testers) testEqualContents;
+  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+  inherit (nixpkgs) writeText runCommand;
+  inherit (nixpkgs.lib.attrsets) recursiveUpdate;
+  inherit (nixpkgs.testers) testEqualContents;
 
   versionCheck = version: package: testEqualContents {
     assertion = "prettier is version ${version}";
