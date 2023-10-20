@@ -8,26 +8,9 @@
   };
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (system:
-      let
-        nixpkgsArgs = {
-          inherit system;
-          config = {
-            permittedInsecurePackages = [
-              "nodejs-16.20.1"
-              "nodejs-16.20.2"
-            ];
-          };
-        };
-        nixpkgs = {
-          stable = import inputs.nixpkgs-stable nixpkgsArgs;
-          stable-2023-07-25 = import inputs.nixpkgs-stable-2023-07-25 nixpkgsArgs;
-          master-2023-05-06 = import inputs.nixpkgs-master-2023-05-06 nixpkgsArgs;
-          master-2023-07-18 = import inputs.nixpkgs-master-2023-07-18 nixpkgsArgs;
-        };
-      in
       rec {
-        packages = import ./. { inherit nixpkgs; };
-        checks = import ./checks.nix { inherit nixpkgs packages; };
+        packages = import ./. { inherit inputs system; };
+        checks = import ./checks.nix { inherit inputs system packages; };
       }
     );
 }
