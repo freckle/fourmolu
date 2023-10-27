@@ -15,6 +15,7 @@ rec {
       pnpm-bin = runCommand "pnpm" { } ''
         mkdir -p "$out/bin"
         ln -s "${pnpm}/lib/node_modules/.bin/pnpm" "$out/bin/pnpm"
+        ln -s "${pnpm}/lib/node_modules/.bin/pnpx" "$out/bin/pnpx"
       '';
     in
     symlinkJoin {
@@ -38,6 +39,7 @@ rec {
       pnpm-bin = runCommand "pnpm" { } ''
         mkdir -p "$out/bin"
         ln -s "${pnpm}/lib/node_modules/.bin/pnpm" "$out/bin/pnpm"
+        ln -s "${pnpm}/lib/node_modules/.bin/pnpx" "$out/bin/pnpx"
       '';
     in
     symlinkJoin {
@@ -61,6 +63,7 @@ rec {
       pnpm-bin = runCommand "pnpm" { } ''
         mkdir -p "$out/bin"
         ln -s "${pnpm}/lib/node_modules/.bin/pnpm" "$out/bin/pnpm"
+        ln -s "${pnpm}/lib/node_modules/.bin/pnpx" "$out/bin/pnpx"
       '';
     in
     symlinkJoin {
