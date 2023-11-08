@@ -14,7 +14,7 @@ rec {
       name = "ghc927";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
+      ghc = haskellPackages.ghcWithPackages (p: [ p.hw-kafka-client ]);
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
     in
@@ -26,7 +26,7 @@ rec {
       name = "ghc928";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
+      ghc = haskellPackages.ghcWithPackages (p: [ p.hw-kafka-client ]);
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
     in
@@ -38,7 +38,7 @@ rec {
       name = "ghc946";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
+      ghc = haskellPackages.ghcWithPackages (p: [ p.hw-kafka-client ]);
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
     in
