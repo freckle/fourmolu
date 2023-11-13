@@ -1,12 +1,20 @@
 { inputs, system }:
 let
-  inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) lib;
-  packages = lib.lists.foldl' (a: b: a // b) { } [
-    (import ./aws-cli/packages.nix { inherit inputs system packages; })
-    (import ./fourmolu/packages.nix { inherit inputs system packages; })
-    (import ./ghc/packages.nix { inherit inputs system packages; })
-    (import ./nodejs/packages.nix { inherit inputs system packages; })
-    (import ./prettier/packages.nix { inherit inputs system packages; })
+  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+  flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
+  files = [
+    ./aws-cli/packages.nix
+    ./fourmolu/packages.nix
+    ./ghc/packages.nix
+    ./nodejs/packages.nix
+    ./prettier/packages.nix
   ];
+  packages =
+    flattenAttrs
+      (
+        nixpkgs.lib.lists.map
+          (file: import file { inherit inputs packages system; })
+          files
+      );
 in
 packages

@@ -3,11 +3,7 @@ let
   nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
   files = [
-    ./aws-cli/checks.nix
-    ./fourmolu/checks.nix
-    ./ghc/checks.nix
-    ./nodejs/checks.nix
-    ./prettier/checks.nix
+    ./ghc/lib.nix
   ];
 in
 flattenAttrs (

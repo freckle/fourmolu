@@ -1,41 +1,8 @@
-{ inputs, system, packages, ... }:
+{ inputs, system, ... }:
 let
-  inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) symlinkJoin;
+  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+  configurations = import ./configurations.nix { inherit inputs system; };
+  applyDefaultVersions = import ./default-versions-function.nix;
+  configurationToPackage = f: f { packageSelection = _: [ ]; };
 in
-(import ./default-versions-function.nix) {
-  ghc-9-2-7 =
-    let
-      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 { inherit system; config = { }; };
-      name = "ghc927";
-      inherit (nixpkgs) haskell;
-      haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
-      inherit (haskell.lib) justStaticExecutables;
-      weeder = justStaticExecutables haskellPackages.weeder;
-    in
-    symlinkJoin { inherit name; paths = [ ghc weeder ]; };
-
-  ghc-9-2-8 =
-    let
-      nixpkgs = import inputs.nixpkgs-unstable-2023-10-21 { inherit system; config = { }; };
-      name = "ghc928";
-      inherit (nixpkgs) haskell;
-      haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
-      inherit (haskell.lib) justStaticExecutables;
-      weeder = justStaticExecutables haskellPackages.weeder;
-    in
-    symlinkJoin { inherit name; paths = [ ghc weeder ]; };
-
-  ghc-9-4-6 =
-    let
-      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
-      name = "ghc946";
-      inherit (nixpkgs) haskell;
-      haskellPackages = haskell.packages.${name};
-      ghc = haskell.compiler.${name};
-      inherit (haskell.lib) justStaticExecutables;
-      weeder = justStaticExecutables haskellPackages.weeder;
-    in
-    symlinkJoin { inherit name; paths = [ ghc weeder ]; };
-}
+applyDefaultVersions (nixpkgs.lib.attrsets.mapAttrs (_: configurationToPackage) configurations)
