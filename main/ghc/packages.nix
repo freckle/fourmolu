@@ -2,12 +2,7 @@
 let
   inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) symlinkJoin;
 in
-rec {
-  ghc-default = ghc-9-4-x;
-
-  ghc-9-2-x = ghc-9-2-8;
-  ghc-9-4-x = ghc-9-4-6;
-
+(import ./default-versions-function.nix) {
   ghc-9-2-7 =
     let
       nixpkgs = import inputs.nixpkgs-stable-2023-07-25 { inherit system; config = { }; };
