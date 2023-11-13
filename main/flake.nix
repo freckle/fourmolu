@@ -11,7 +11,7 @@
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (system:
       rec {
-        packages = import ./. { inherit inputs system; };
+        packages = import ./packages.nix { inherit inputs system; };
         checks = import ./checks.nix { inherit inputs system packages; };
       }
     );
