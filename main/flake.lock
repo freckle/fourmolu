@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-23-05": {
+      "locked": {
+        "lastModified": 1701362232,
+        "narHash": "sha256-GVdzxL0lhEadqs3hfRLuj+L1OJFGiL/L7gCcelgBlsw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d2332963662edffacfddfad59ff4f709dde80ffe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-master-2023-05-06": {
       "locked": {
         "lastModified": 1683392273,
@@ -68,16 +84,16 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1697226376,
-        "narHash": "sha256-cumLLb1QOUtWieUnLGqo+ylNt3+fU8Lcv5Zl+tYbRUE=",
+        "lastModified": 1701263465,
+        "narHash": "sha256-lNXUIlkfyDyp9Ox21hr+wsEf/IBklLvb6bYcyeXbdRc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "898cb2064b6e98b8c5499f37e81adbdf2925f7c5",
+        "rev": "50aa30a13c4ab5e7ba282da460a3e3d44e9d0eb3",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.05",
+        "ref": "nixos-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -117,6 +133,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "nixpkgs-23-05": "nixpkgs-23-05",
         "nixpkgs-master-2023-05-06": "nixpkgs-master-2023-05-06",
         "nixpkgs-master-2023-07-18": "nixpkgs-master-2023-07-18",
         "nixpkgs-master-2023-09-15": "nixpkgs-master-2023-09-15",
