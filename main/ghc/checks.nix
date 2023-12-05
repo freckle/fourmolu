@@ -25,8 +25,10 @@ in
   ghc-9-2-7 = ghcVersionCheck "9.2.7" packages.ghc-9-2-7;
   ghc-9-2-8 = ghcVersionCheck "9.2.8" packages.ghc-9-2-8;
   ghc-9-4-6 = ghcVersionCheck "9.4.6" packages.ghc-9-4-6;
+  ghc-9-4-7 = ghcVersionCheck "9.4.7" packages.ghc-9-4-7;
 
   weeder-for-ghc-9-2-7 = weederVersionCheck "2.4.1" packages.ghc-9-2-7;
   weeder-for-ghc-9-2-8 = weederVersionCheck "2.4.1" packages.ghc-9-2-8;
   weeder-for-ghc-9-4-6 = weederVersionCheck "2.5.0" packages.ghc-9-4-6;
+  weeder-for-ghc-9-4-7 = weederVersionCheck "2.7.0" packages.ghc-9-4-7;
 }

@@ -22,6 +22,7 @@ let
     expected = writeText "expected" (version + "\n");
     actual = runCommand "actual" { nativeBuildInputs = [ package ]; } "pnpm --version > $out";
   };
+
 in
 {
   nodejs-16-20-0-version = checkNodejsVersion "16.20.0" packages.nodejs-16-20-0;

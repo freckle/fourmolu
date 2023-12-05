@@ -50,7 +50,7 @@ rec {
 
   nodejs-16-20-2 = (
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-23-05 {
         inherit system; config = {
         permittedInsecurePackages = [
           "nodejs-16.20.2"
