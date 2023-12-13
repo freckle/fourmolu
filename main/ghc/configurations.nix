@@ -50,4 +50,16 @@ in
       weeder = justStaticExecutables haskellPackages.weeder;
     in
     symlinkJoin { inherit name; paths = [ ghcWithPackages weeder ]; };
+
+  ghc-9-4-8 = { packageSelection }:
+    let
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      name = "ghc948";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+    in
+    symlinkJoin { inherit name; paths = [ ghcWithPackages weeder ]; };
 }
