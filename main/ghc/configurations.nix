@@ -1,11 +1,27 @@
 { inputs, system }:
 let
   inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) symlinkJoin;
+
+  addPatches = patches: prev: { patches = (prev.patches or [ ]) ++ patches; };
+
+  ghcOverlay = ghcVersion: override: final: prev: prev // {
+    haskell = prev.haskell // {
+      compiler = prev.haskell.compiler // {
+        ${ghcVersion} = prev.haskell.compiler.${ghcVersion}.overrideAttrs override;
+      };
+    };
+  };
 in
 {
   ghc-9-2-7 = { packageSelection }:
     let
-      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 {
+        inherit system;
+        config = { };
+        overlays = [
+          (ghcOverlay "ghc927" (addPatches [ ./sanity-check-find-file-name.patch ]))
+        ];
+      };
       name = "ghc927";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
