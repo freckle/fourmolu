@@ -1,4 +1,4 @@
-{ inputs, system, packages, ... }:
+{ inputs, system, packages, lib, ... }:
 let
   nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
   inherit (nixpkgs) writeText runCommand;
@@ -20,6 +20,16 @@ let
       weeder --version | head -n1 > $out
     '';
   };
+
+  hlsVersionCheck = version: package: testEqualContents {
+    assertion = "haskell-language-server is version ${version}";
+    expected = writeText "expected" ("haskell-language-server version: " + version + "\n");
+    actual = runCommand "actual" { nativeBuildInputs = [ package ]; } ''
+      haskell-language-server-wrapper --version | head -n1 \
+        | sed -re 's#^(haskell-language-server version: [[:digit:]\.]+).*$#\1#' \
+        > $out
+    '';
+  };
 in
 {
   ghc-9-2-7 = ghcVersionCheck "9.2.7" packages.ghc-9-2-7;
@@ -34,4 +44,10 @@ in
   weeder-for-ghc-9-4-6 = weederVersionCheck "2.5.0" packages.ghc-9-4-6;
   weeder-for-ghc-9-4-7 = weederVersionCheck "2.7.0" packages.ghc-9-4-7;
   weeder-for-ghc-9-6-3 = weederVersionCheck "2.7.0" packages.ghc-9-6-3;
+
+  hls-for-ghc-9-2-7 = hlsVersionCheck "1.10.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-2-7"; enableHLS = true; });
+  hls-for-ghc-9-2-8 = hlsVersionCheck "2.2.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-2-8"; enableHLS = true; });
+  hls-for-ghc-9-4-6 = hlsVersionCheck "1.10.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-6"; enableHLS = true; });
+  hls-for-ghc-9-4-7 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-7"; enableHLS = true; });
+  hls-for-ghc-9-6-3 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-6-3"; enableHLS = true; });
 }

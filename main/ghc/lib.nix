@@ -6,8 +6,11 @@ in
 
 {
   haskellBundle =
-    { ghcVersion ? "ghc-default", packageSelection ? _: [ ] }:
+    { ghcVersion ? "ghc-default"
+    , packageSelection ? _: [ ]
+    , enableHLS ? false # Haskell Language Server is optional because it is large
+    }:
     (applyDefaultVersions configurations).${ghcVersion} {
-      inherit packageSelection;
+      inherit packageSelection enableHLS;
     };
 }

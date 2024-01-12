@@ -1,4 +1,4 @@
-{ inputs, packages, system }:
+{ inputs, packages, system, lib }:
 let
   nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
@@ -12,6 +12,6 @@ let
 in
 flattenAttrs (
   nixpkgs.lib.lists.map
-    (file: import file { inherit inputs packages system; })
+    (file: import file { inherit inputs packages lib system; })
     files
 )
