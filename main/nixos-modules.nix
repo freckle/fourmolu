@@ -3,7 +3,7 @@
   docker-for-local-dev =
     { system, ... }:
     let
-      pkgs = import inputs.nixos-22.11 { inherit system; };
+      pkgs = import inputs.nixos-22 .11 { inherit system; };
     in
     {
       # Enable Docker
