@@ -28,4 +28,11 @@
 
       virtualisation.docker.package = pkgs.docker;
     };
+
+  renaissance-vpn =
+    { pkgs, ... }:
+    {
+      services.globalprotect.enable = true;
+      environment.systemPackages = [ pkgs.globalprotect-openconnect ];
+    };
 }
