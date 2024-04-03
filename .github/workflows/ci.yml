@@ -10,7 +10,6 @@ jobs:
     strategy:
       matrix:
         runner:
-          - macos-latest-4-cores
           - ubuntu-latest-4-cores
     runs-on: ${{ matrix.runner }}
     steps:
