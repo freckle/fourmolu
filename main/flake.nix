@@ -22,4 +22,12 @@
     ) // {
       nixosModules = import ./nixos-modules.nix { inherit inputs; };
     };
+  nixConfig = {
+    extra-substituters = [
+      "https://freckle-flakes.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "freckle-flakes.cachix.org-1:d+zszsfs+gamqZPjsGQPtDvpDNhE6pLSmtZDQHYTUDo="
+    ];
+  };
 }
