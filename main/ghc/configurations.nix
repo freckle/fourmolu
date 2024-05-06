@@ -114,4 +114,36 @@ in
       inherit name;
       paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
     };
+
+  ghc-9-6-4 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-master-2024-05-06 { inherit system; config = { }; };
+      name = "ghc964";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "964" ]; };
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
+
+  ghc-9-6-5 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-master-2024-05-06 { inherit system; config = { }; };
+      name = "ghc965";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "965" ]; };
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
 }
