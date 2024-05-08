@@ -16,19 +16,7 @@
   outputs = inputs:
     (inputs.flake-utils.lib.eachDefaultSystem (system:
       rec {
-        packages = import ./packages.nix { inherit inputs system; } //
-        {
-          test1 = lib.haskellBundle
-            {
-              ghcVersion = "ghc-9-6-4";
-              enableHLS = true;
-            };
-          test2 = lib.haskellBundle
-            {
-              ghcVersion = "ghc-9-6-5";
-              enableHLS = true;
-            };
-        };
+        packages = import ./packages.nix { inherit inputs system; };
         lib = import ./lib.nix { inherit inputs system packages; };
         checks = import ./checks.nix { inherit inputs system packages lib; };
       })
