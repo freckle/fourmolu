@@ -25,9 +25,11 @@
     };
   nixConfig = {
     extra-substituters = [
+      "https://freckle.cachix.org"
       "https://freckle-flakes.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "freckle.cachix.org-1:WnI1pZdwLf2vnP9Fx7OGbVSREqqi4HM2OhNjYmZ7odo="
       "freckle-flakes.cachix.org-1:d+zszsfs+gamqZPjsGQPtDvpDNhE6pLSmtZDQHYTUDo="
     ];
   };
