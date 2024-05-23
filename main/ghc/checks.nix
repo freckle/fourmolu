@@ -47,6 +47,7 @@ in
   weeder-for-ghc-9-4-5 = weederVersionCheck "2.7.0" packages.ghc-9-4-5;
   weeder-for-ghc-9-4-6 = weederVersionCheck "2.5.0" packages.ghc-9-4-6;
   weeder-for-ghc-9-4-7 = weederVersionCheck "2.7.0" packages.ghc-9-4-7;
+  weeder-for-ghc-9-4-8 = weederVersionCheck "2.7.0" packages.ghc-9-4-8;
   weeder-for-ghc-9-6-3 = weederVersionCheck "2.7.0" packages.ghc-9-6-3;
   weeder-for-ghc-9-6-4 = weederVersionCheck "2.8.0" packages.ghc-9-6-4;
   weeder-for-ghc-9-6-5 = weederVersionCheck "2.8.0" packages.ghc-9-6-5;
@@ -56,6 +57,7 @@ in
   hls-for-ghc-9-4-5 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-5"; enableHLS = true; });
   hls-for-ghc-9-4-6 = hlsVersionCheck "1.10.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-6"; enableHLS = true; });
   hls-for-ghc-9-4-7 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-7"; enableHLS = true; });
+  hls-for-ghc-9-4-8 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-8"; enableHLS = true; });
   hls-for-ghc-9-6-3 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-6-3"; enableHLS = true; });
   hls-for-ghc-9-6-4 = hlsVersionCheck "2.7.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-6-4"; enableHLS = true; });
   hls-for-ghc-9-6-5 = hlsVersionCheck "2.7.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-6-5"; enableHLS = true; });
