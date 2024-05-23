@@ -51,6 +51,22 @@ in
       paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
+  ghc-9-4-5 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      name = "ghc945";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "945" ]; };
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
+
   ghc-9-4-6 = { packageSelection, enableHLS }:
     let
       nixpkgs = import inputs.nixpkgs-23-05 { inherit system; config = { }; };
