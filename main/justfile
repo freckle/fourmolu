@@ -1,0 +1,3 @@
+# Run an individual check
+check x:
+  nix build ./.#checks.$(nix eval --impure --expr "builtins.currentSystem").{{x}} --no-link --print-out-paths
