@@ -37,7 +37,7 @@ in
 
   ghc-9-2-8 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2023-10-21 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
       name = "ghc928";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
