@@ -53,7 +53,7 @@ in
   weeder-for-ghc-9-6-5 = weederVersionCheck "2.8.0" packages.ghc-9-6-5;
 
   hls-for-ghc-9-2-7 = hlsVersionCheck "1.10.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-2-7"; enableHLS = true; });
-  hls-for-ghc-9-2-8 = hlsVersionCheck "2.2.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-2-8"; enableHLS = true; });
+  hls-for-ghc-9-2-8 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-2-8"; enableHLS = true; });
   hls-for-ghc-9-4-5 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-5"; enableHLS = true; });
   hls-for-ghc-9-4-6 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-6"; enableHLS = true; });
   hls-for-ghc-9-4-7 = hlsVersionCheck "2.4.0.0" (lib.haskellBundle { ghcVersion = "ghc-9-4-7"; enableHLS = true; });
