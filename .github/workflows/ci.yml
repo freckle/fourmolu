@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         runner:
-          - ubuntu-latest
+          - ubuntu-latest-4-cores
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
