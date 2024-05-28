@@ -29,10 +29,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "927" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-2-8 = { packageSelection, enableHLS }:
@@ -45,10 +47,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "928" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-4-5 = { packageSelection, enableHLS }:
@@ -61,10 +65,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "945" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-4-6 = { packageSelection, enableHLS }:
@@ -77,10 +83,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "946" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-4-7 = { packageSelection, enableHLS }:
@@ -93,10 +101,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "947" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-4-8 = { packageSelection, enableHLS }:
@@ -109,10 +119,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "948" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-6-3 = { packageSelection, enableHLS }:
@@ -125,10 +137,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "963" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-6-4 = { packageSelection, enableHLS }:
@@ -141,10 +155,12 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "964" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
   ghc-9-6-5 = { packageSelection, enableHLS }:
@@ -157,9 +173,11 @@ in
       inherit (haskell.lib) justStaticExecutables;
       weeder = justStaticExecutables haskellPackages.weeder;
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "965" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 }
