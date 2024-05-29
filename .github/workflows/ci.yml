@@ -10,7 +10,8 @@ jobs:
     strategy:
       matrix:
         runner:
-          - ubuntu-latest-4-cores
+          - ubuntu-latest
+          - macos-latest
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
@@ -20,4 +21,4 @@ jobs:
           name: freckle
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Check
-        run: nix flake check --accept-flake-config ./main
+        run: nix flake check --accept-flake-config --keep-going ./main
