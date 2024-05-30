@@ -16,7 +16,10 @@
     nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-stable";
   };
   outputs = inputs:
-    (inputs.flake-utils.lib.eachDefaultSystem (system:
+    let
+      systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    in
+    (inputs.flake-utils.lib.eachSystem systems (system:
       rec {
         packages = import ./packages.nix { inherit inputs system; };
         lib = import ./lib.nix { inherit inputs system packages; };
@@ -25,12 +28,12 @@
     ) // {
       nixosModules = import ./nixos-modules.nix { inherit inputs; };
       githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
-        checks =
-          inputs.nixpkgs-stable.lib.getAttrs [
-            "x86_64-linux"
-            "x86_64-darwin"
-          ]
-            inputs.self.checks;
+        checks = inputs.nixpkgs-stable.lib.getAttrs systems inputs.self.checks;
+        platforms = {
+          "x86_64-linux" = "ubuntu-22.04";
+          "x86_64-darwin" = "macos-12";
+          "aarch64-darwin" = "macos-14";
+        };
       };
     };
   nixConfig = {
