@@ -50,6 +50,8 @@ in
   nodejs-16-20-2 = nodeCheck { packageName = "nodejs-16-20-2"; node = "16.20.2"; yarn = "1.22.19"; pnpm = "8.5.1"; };
   nodejs-18-17-1 = nodeCheck { packageName = "nodejs-18-17-1"; node = "18.17.1"; yarn = "1.22.19"; pnpm = "8.6.12"; };
   nodejs-18-18-0 = nodeCheck { packageName = "nodejs-18-18-0"; node = "18.18.0"; yarn = "1.22.19"; pnpm = "8.8.0"; };
+  nodejs-18-19-1 = nodeCheck { packageName = "nodejs-18-19-1"; node = "18.19.1"; yarn = "1.22.22"; pnpm = "8.15.5"; };
+  nodejs-18-20-2 = nodeCheck { packageName = "nodejs-18-20-2"; node = "18.20.2"; yarn = "1.22.22"; pnpm = "8.15.5"; };
   nodejs-20-11-0 = nodeCheck { packageName = "nodejs-20-11-0"; node = "20.11.0"; yarn = "1.22.19"; pnpm = "8.14.0"; };
   nodejs-20-11-1 = nodeCheck { packageName = "nodejs-20-11-1"; node = "20.11.1"; yarn = "1.22.19"; pnpm = "8.15.1"; };
 }
