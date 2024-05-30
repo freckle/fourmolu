@@ -12,6 +12,8 @@
     nixpkgs-unstable-2023-10-21.url = "github:nixos/nixpkgs/038b2922be3fc096e1d456f93f7d0f4090628729";
     nixpkgs-unstable-2024-02-20.url = "github:nixos/nixpkgs/b98a4e1746acceb92c509bc496ef3d0e5ad8d4aa";
     flake-utils.url = "github:numtide/flake-utils";
+    nix-github-actions.url = "github:nix-community/nix-github-actions";
+    nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-stable";
   };
   outputs = inputs:
     (inputs.flake-utils.lib.eachDefaultSystem (system:
@@ -22,6 +24,14 @@
       })
     ) // {
       nixosModules = import ./nixos-modules.nix { inherit inputs; };
+      githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
+        checks =
+          inputs.nixpkgs-stable.lib.getAttrs [
+            "x86_64-linux"
+            "x86_64-darwin"
+          ]
+            inputs.self.checks;
+      };
     };
   nixConfig = {
     extra-substituters = [

@@ -5,10 +5,30 @@ let
   inherit (nixpkgs.lib.attrsets) recursiveUpdate;
   inherit (nixpkgs.testers) testEqualContents;
 
-  checkNodejsVersion = version: package: testEqualContents {
-    assertion = "nodejs is version ${version}";
-    expected = writeText "expected" ("v" + version + "\n");
-    actual = runCommand "actual" { nativeBuildInputs = [ package ]; } "node --version > $out";
+  nodeCheck = { packageName, node, yarn, pnpm }: testEqualContents {
+    assertion = "versions for ${packageName}";
+    expected = writeText "expected" ''
+      node v${node}
+      yarn ${yarn}
+      pnpm ${pnpm}
+    '';
+    actual = runCommand "actual"
+      {
+        nativeBuildInputs = [
+          packages.${packageName}
+        ];
+      } ''
+      touch $out
+
+      echo -n "node " >> $out
+      node --version >> $out
+
+      echo -n "yarn " >> $out
+      yarn --version >> $out
+
+      echo -n "pnpm " >> $out
+      pnpm --version >> $out
+    '';
   };
 
   checkYarnVersion = version: package: testEqualContents {
@@ -20,32 +40,16 @@ let
   checkPnpmVersion = version: package: testEqualContents {
     assertion = "pnpm is version ${version}";
     expected = writeText "expected" (version + "\n");
-    actual = runCommand "actual" { nativeBuildInputs = [ package ]; } "pnpm --version > $out";
+    actual = runCommand "actual" { nativeBuildInputs = [ package ]; } "";
   };
 
 in
 {
-  nodejs-16-20-0-version = checkNodejsVersion "16.20.0" packages.nodejs-16-20-0;
-  nodejs-16-20-1-version = checkNodejsVersion "16.20.1" packages.nodejs-16-20-1;
-  nodejs-16-20-2-version = checkNodejsVersion "16.20.2" packages.nodejs-16-20-2;
-  nodejs-18-17-1-version = checkNodejsVersion "18.17.1" packages.nodejs-18-17-1;
-  nodejs-18-18-0-version = checkNodejsVersion "18.18.0" packages.nodejs-18-18-0;
-  nodejs-20-11-0-version = checkNodejsVersion "20.11.0" packages.nodejs-20-11-0;
-  nodejs-20-11-1-version = checkNodejsVersion "20.11.1" packages.nodejs-20-11-1;
-
-  nodejs-16-20-0-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-16-20-0;
-  nodejs-16-20-1-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-16-20-1;
-  nodejs-16-20-2-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-16-20-2;
-  nodejs-18-17-1-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-18-17-1;
-  nodejs-18-18-0-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-18-18-0;
-  nodejs-20-11-0-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-20-11-0;
-  nodejs-20-11-1-yarn-version = checkYarnVersion "1.22.19" packages.nodejs-20-11-1;
-
-  nodejs-16-20-0-pnpm-version = checkPnpmVersion "8.4.0" packages.nodejs-16-20-0;
-  nodejs-16-20-1-pnpm-version = checkPnpmVersion "8.5.1" packages.nodejs-16-20-1;
-  nodejs-16-20-2-pnpm-version = checkPnpmVersion "8.5.1" packages.nodejs-16-20-2;
-  nodejs-18-17-1-pnpm-version = checkPnpmVersion "8.6.12" packages.nodejs-18-17-1;
-  nodejs-18-18-0-pnpm-version = checkPnpmVersion "8.8.0" packages.nodejs-18-18-0;
-  nodejs-20-11-0-pnpm-version = checkPnpmVersion "8.14.0" packages.nodejs-20-11-0;
-  nodejs-20-11-1-pnpm-version = checkPnpmVersion "8.15.1" packages.nodejs-20-11-1;
+  nodejs-16-20-0 = nodeCheck { packageName = "nodejs-16-20-0"; node = "16.20.0"; yarn = "1.22.19"; pnpm = "8.4.0"; };
+  nodejs-16-20-1 = nodeCheck { packageName = "nodejs-16-20-1"; node = "16.20.1"; yarn = "1.22.19"; pnpm = "8.5.1"; };
+  nodejs-16-20-2 = nodeCheck { packageName = "nodejs-16-20-2"; node = "16.20.2"; yarn = "1.22.19"; pnpm = "8.5.1"; };
+  nodejs-18-17-1 = nodeCheck { packageName = "nodejs-18-17-1"; node = "18.17.1"; yarn = "1.22.19"; pnpm = "8.6.12"; };
+  nodejs-18-18-0 = nodeCheck { packageName = "nodejs-18-18-0"; node = "18.18.0"; yarn = "1.22.19"; pnpm = "8.8.0"; };
+  nodejs-20-11-0 = nodeCheck { packageName = "nodejs-20-11-0"; node = "20.11.0"; yarn = "1.22.19"; pnpm = "8.14.0"; };
+  nodejs-20-11-1 = nodeCheck { packageName = "nodejs-20-11-1"; node = "20.11.1"; yarn = "1.22.19"; pnpm = "8.15.1"; };
 }
