@@ -10,6 +10,7 @@
     nixpkgs-master-2024-01-27.url = "github:nixos/nixpkgs/160b762eda6d139ac10ae081f8f78d640dd523eb";
     nixpkgs-unstable-2023-10-21.url = "github:nixos/nixpkgs/038b2922be3fc096e1d456f93f7d0f4090628729";
     nixpkgs-unstable-2024-02-20.url = "github:nixos/nixpkgs/b98a4e1746acceb92c509bc496ef3d0e5ad8d4aa";
+    nixpkgs-unstable-2024-04-03.url = "github:nixos/nixpkgs/62e885a4013446453b10fd7780eba4337f6f42e0";
     nixpkgs-unstable-2024-05-30.url = "github:nixos/nixpkgs/aa61b27554a5fc282758bf0324781e3464ef2cde";
     flake-utils.url = "github:numtide/flake-utils";
     nix-github-actions.url = "github:nix-community/nix-github-actions";
