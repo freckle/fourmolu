@@ -195,7 +195,7 @@ in
 
   ghc-9-10-1 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-haskell-updates { inherit system; config = { }; };
       name = "ghc910";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
