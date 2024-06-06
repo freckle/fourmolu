@@ -201,13 +201,11 @@ in
       haskellPackages = haskell.packages.${name};
       ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
       inherit (haskell.lib) justStaticExecutables;
-      weeder = justStaticExecutables haskellPackages.weeder;
-      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "910" ]; };
       cabal = nixpkgs.cabal-install;
       stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
+      paths = [ ghcWithPackages cabal stack ];
     };
 }
