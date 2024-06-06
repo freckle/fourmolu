@@ -39,11 +39,11 @@ let
 
 in
 {
-  ghc-9-2-7 = ghcCheck { packageName = "ghc-9-2-7"; ghc = "9.2.7"; weeder = "2.4.1"; hls = "1.10.0.0"; };
+  ghc-9-2-7 = ghcCheck { packageName = "ghc-9-2-7"; ghc = "9.2.7"; weeder = "2.4.1"; hls = "2.8.0.0"; };
   ghc-9-2-8 = ghcCheck { packageName = "ghc-9-2-8"; ghc = "9.2.8"; weeder = "2.4.1"; hls = "2.8.0.0"; };
-  ghc-9-4-5 = ghcCheck { packageName = "ghc-9-4-5"; ghc = "9.4.5"; weeder = "2.7.0"; hls = "2.4.0.0"; };
-  ghc-9-4-6 = ghcCheck { packageName = "ghc-9-4-6"; ghc = "9.4.6"; weeder = "2.7.0"; hls = "2.4.0.0"; };
-  ghc-9-4-7 = ghcCheck { packageName = "ghc-9-4-7"; ghc = "9.4.7"; weeder = "2.7.0"; hls = "2.4.0.0"; };
+  ghc-9-4-5 = ghcCheck { packageName = "ghc-9-4-5"; ghc = "9.4.5"; weeder = "2.8.0"; hls = "2.8.0.0"; };
+  ghc-9-4-6 = ghcCheck { packageName = "ghc-9-4-6"; ghc = "9.4.6"; weeder = "2.8.0"; hls = "2.8.0.0"; };
+  ghc-9-4-7 = ghcCheck { packageName = "ghc-9-4-7"; ghc = "9.4.7"; weeder = "2.8.0"; hls = "2.8.0.0"; };
   ghc-9-4-8 = ghcCheck { packageName = "ghc-9-4-8"; ghc = "9.4.8"; weeder = "2.8.0"; hls = "2.8.0.0"; };
   ghc-9-6-3 = ghcCheck { packageName = "ghc-9-6-3"; ghc = "9.6.3"; weeder = "2.8.0"; hls = "2.8.0.0"; };
   ghc-9-6-4 = ghcCheck { packageName = "ghc-9-6-4"; ghc = "9.6.4"; weeder = "2.8.0"; hls = "2.8.0.0"; };
