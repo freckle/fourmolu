@@ -202,10 +202,9 @@ in
       ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
       inherit (haskell.lib) justStaticExecutables;
       cabal = nixpkgs.cabal-install;
-      stack = import ./stack.nix { inherit nixpkgs; };
     in
     symlinkJoin {
       inherit name;
-      paths = [ ghcWithPackages cabal stack ];
+      paths = [ ghcWithPackages cabal ];
     };
 }
