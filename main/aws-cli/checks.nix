@@ -18,4 +18,5 @@ in
 {
   aws-cli-2-11-20 = versionCheck "2.11.20" packages.aws-cli-2-11-20;
   aws-cli-2-13-33 = versionCheck "2.13.33" packages.aws-cli-2-13-33;
+  aws-cli-2-15-43 = versionCheck "2.15.43" packages.aws-cli-2-15-43;
 }

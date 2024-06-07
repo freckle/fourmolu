@@ -16,8 +16,7 @@ in
   ghc-9-2-7 = { packageSelection, enableHLS }:
     let
       nixpkgs = import inputs.nixpkgs-stable-2023-07-25 {
-        inherit system;
-        config = { };
+        inherit system; config = { };
         overlays = [
           (ghcOverlay "ghc927" (addPatches [ ./sanity-check-find-file-name.patch ]))
         ];
@@ -129,7 +128,7 @@ in
 
   ghc-9-6-3 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-05-30 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
       name = "ghc963";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
@@ -147,7 +146,7 @@ in
 
   ghc-9-6-4 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-05-30 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
       name = "ghc964";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
@@ -165,7 +164,7 @@ in
 
   ghc-9-6-5 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-05-30 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
       name = "ghc965";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
@@ -179,5 +178,38 @@ in
     symlinkJoin {
       inherit name;
       paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
+
+  ghc-9-8-1 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      name = "ghc981";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "981" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
+
+  ghc-9-10-1 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-haskell-updates { inherit system; config = { }; };
+      name = "ghc910";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      cabal = nixpkgs.cabal-install;
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages cabal ];
     };
 }
