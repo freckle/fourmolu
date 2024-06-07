@@ -15,7 +15,12 @@ in
 {
   ghc-9-2-7 = { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 {
+        inherit system; config = { };
+        overlays = [
+          (ghcOverlay "ghc927" (addPatches [ ./sanity-check-find-file-name.patch ]))
+        ];
+      };
       name = "ghc927";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
