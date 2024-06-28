@@ -4,6 +4,7 @@ let
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
   files = [
     ./aws-cli/checks.nix
+    ./cypress/checks.nix
     ./fourmolu/checks.nix
     ./ghc/checks.nix
     ./nodejs/checks.nix
