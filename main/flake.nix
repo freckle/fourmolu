@@ -27,6 +27,10 @@
         packages = import ./packages.nix { inherit inputs system; };
         lib = import ./lib.nix { inherit inputs system packages; };
         checks = import ./checks.nix { inherit inputs system packages lib; };
+      devShells.default =
+        (let nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; }; in nixpkgs.mkShell {
+          nativeBuildInputs = [ nixpkgs.nixfmt ];
+        });
       })
     ) // {
       nixosModules = import ./nixos-modules.nix { inherit inputs; };
