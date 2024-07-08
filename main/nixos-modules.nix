@@ -3,7 +3,7 @@
   docker-for-local-dev =
     { config, ... }:
     let
-      pkgs = import inputs.nixpkgs-22-11 { inherit (config.nixpkgs) system; };
+      pkgs = import inputs.nixpkgs-23-11 { inherit (config.nixpkgs) system; };
     in
     {
       # Enable Docker
