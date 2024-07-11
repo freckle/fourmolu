@@ -1,6 +1,14 @@
-{ inputs, packages, system, lib }:
+{
+  inputs,
+  packages,
+  system,
+  lib,
+}:
 let
-  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+  nixpkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config = { };
+  };
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
   files = [
     ./aws-cli/checks.nix
@@ -12,7 +20,15 @@ let
   ];
 in
 flattenAttrs (
-  nixpkgs.lib.lists.map
-    (file: import file { inherit inputs packages lib system; })
-    files
+  nixpkgs.lib.lists.map (
+    file:
+    import file {
+      inherit
+        inputs
+        packages
+        lib
+        system
+        ;
+    }
+  ) files
 )
