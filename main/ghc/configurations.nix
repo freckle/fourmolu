@@ -198,6 +198,24 @@ in
       paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
     };
 
+  ghc-9-8-2 = { packageSelection, enableHLS }:
+    let
+      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      name = "ghc982";
+      inherit (nixpkgs) haskell;
+      haskellPackages = haskell.packages.${name};
+      ghcWithPackages = haskellPackages.ghcWithPackages packageSelection;
+      inherit (haskell.lib) justStaticExecutables;
+      weeder = justStaticExecutables haskellPackages.weeder;
+      hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "982" ]; };
+      cabal = nixpkgs.cabal-install;
+      stack = import ./stack.nix { inherit nixpkgs; };
+    in
+    symlinkJoin {
+      inherit name;
+      paths = [ ghcWithPackages weeder cabal stack ] ++ (if enableHLS then [ hls ] else [ ]);
+    };
+
   ghc-9-10-1 = { packageSelection, enableHLS }:
     let
       nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
