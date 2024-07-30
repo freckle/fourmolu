@@ -14,6 +14,7 @@
     nixpkgs-unstable-2024-02-20.url = "github:nixos/nixpkgs/b98a4e1746acceb92c509bc496ef3d0e5ad8d4aa";
     nixpkgs-unstable-2024-04-03.url = "github:nixos/nixpkgs/62e885a4013446453b10fd7780eba4337f6f42e0";
     nixpkgs-unstable-2024-05-30.url = "github:nixos/nixpkgs/aa61b27554a5fc282758bf0324781e3464ef2cde";
+    nixpkgs-unstable-2024-07-29.url = "github:nixos/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
     nixpkgs-haskell-updates.url = "github:nixos/nixpkgs/haskell-updates";
     flake-utils.url = "github:numtide/flake-utils";
     nix-github-actions.url = "github:nix-community/nix-github-actions";
