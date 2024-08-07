@@ -7,7 +7,10 @@ rec {
   cypress-13-2-x = cypress-13-2-0;
   cypress-13-2-0 =
     let
-      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable {
+        inherit system;
+        config = { };
+      };
     in
     nixpkgs.cypress.overrideAttrs (oldAttrs: rec {
       pname = "cypress";
@@ -22,7 +25,10 @@ rec {
   cypress-13-6-x = cypress-13-6-4;
   cypress-13-6-4 =
     let
-      nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-stable {
+        inherit system;
+        config = { };
+      };
     in
     nixpkgs.cypress.overrideAttrs (oldAttrs: rec {
       pname = "cypress";

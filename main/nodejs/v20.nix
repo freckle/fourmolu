@@ -1,6 +1,13 @@
 { inputs, system, ... }:
 let
-  inherit (import inputs.nixpkgs-stable { inherit system; config = { }; }) symlinkJoin runCommand;
+  inherit
+    (import inputs.nixpkgs-stable {
+      inherit system;
+      config = { };
+    })
+    symlinkJoin
+    runCommand
+    ;
 in
 rec {
   nodejs-20-x = nodejs-20-11-x;
@@ -9,7 +16,10 @@ rec {
 
   nodejs-20-11-0 = (
     let
-      nixpkgs = import inputs.nixpkgs-master-2024-01-27 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-master-2024-01-27 {
+        inherit system;
+        config = { };
+      };
       nodejs = nixpkgs.nodejs_20;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
@@ -21,13 +31,21 @@ rec {
     in
     symlinkJoin {
       name = "nodejs";
-      paths = [ nodejs pnpm pnpm-bin yarn ];
+      paths = [
+        nodejs
+        pnpm
+        pnpm-bin
+        yarn
+      ];
     }
   );
 
   nodejs-20-11-1 = (
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-02-20 { inherit system; config = { }; };
+      nixpkgs = import inputs.nixpkgs-unstable-2024-02-20 {
+        inherit system;
+        config = { };
+      };
       nodejs = nixpkgs.nodejs_20;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
@@ -39,7 +57,12 @@ rec {
     in
     symlinkJoin {
       name = "nodejs";
-      paths = [ nodejs pnpm pnpm-bin yarn ];
+      paths = [
+        nodejs
+        pnpm
+        pnpm-bin
+        yarn
+      ];
     }
   );
 }
