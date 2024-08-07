@@ -1,6 +1,9 @@
 { inputs, system }:
 let
-  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
+  nixpkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config = { };
+  };
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
   files = [
     ./aws-cli/packages.nix
@@ -10,13 +13,10 @@ let
     ./locize-cli/packages.nix
     ./nodejs/packages.nix
     ./prettier/packages.nix
+    ./stack-lint-extra-deps/packages.nix
   ];
-  packages =
-    flattenAttrs
-      (
-        nixpkgs.lib.lists.map
-          (file: import file { inherit inputs packages system; })
-          files
-      );
+  packages = flattenAttrs (
+    nixpkgs.lib.lists.map (file: import file { inherit inputs packages system; }) files
+  );
 in
 packages
