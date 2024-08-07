@@ -1,8 +1,7 @@
-{
-  inputs,
-  system,
-  packages,
-  ...
+{ inputs
+, system
+, packages
+, ...
 }:
 let
   nixpkgs = import inputs.nixpkgs-stable {

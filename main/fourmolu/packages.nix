@@ -1,8 +1,7 @@
-{
-  inputs,
-  system,
-  packages,
-  ...
+{ inputs
+, system
+, packages
+, ...
 }:
 let
   versions = v0-13 // v0-14 // { fourmolu-default = versions.fourmolu-0-13-x; };

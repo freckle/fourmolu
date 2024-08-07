@@ -1,8 +1,7 @@
-{
-  inputs,
-  packages,
-  system,
-  ...
+{ inputs
+, packages
+, system
+, ...
 }:
 let
   nixpkgs = import inputs.nixpkgs-stable {
@@ -14,11 +13,11 @@ let
   inherit (nixpkgs.testers) testEqualContents;
 
   nodeCheck =
-    {
-      packageName,
-      node,
-      yarn,
-      pnpm,
+    { packageName
+    , node
+    , yarn
+    , pnpm
+    ,
     }:
     testEqualContents {
       assertion = "versions for ${packageName}";

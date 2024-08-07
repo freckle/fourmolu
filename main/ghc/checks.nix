@@ -1,9 +1,8 @@
-{
-  inputs,
-  system,
-  packages,
-  lib,
-  ...
+{ inputs
+, system
+, packages
+, lib
+, ...
 }:
 let
   nixpkgs = import inputs.nixpkgs-stable {
@@ -16,11 +15,11 @@ let
   inherit (inputs.nixpkgs-stable.lib) optionalString concatLines;
 
   ghcCheck =
-    {
-      packageName,
-      ghc,
-      weeder ? null,
-      hls ? null,
+    { packageName
+    , ghc
+    , weeder ? null
+    , hls ? null
+    ,
     }:
     testEqualContents {
       assertion = "versions for ${packageName}";
