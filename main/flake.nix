@@ -15,22 +15,34 @@
     nixpkgs-unstable-2024-04-03.url = "github:nixos/nixpkgs/62e885a4013446453b10fd7780eba4337f6f42e0";
     nixpkgs-unstable-2024-05-30.url = "github:nixos/nixpkgs/aa61b27554a5fc282758bf0324781e3464ef2cde";
     nixpkgs-unstable-2024-07-29.url = "github:nixos/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
+    stack-lint-extra-deps.url = "github:freckle/stack-lint-extra-deps";
     nixpkgs-haskell-updates.url = "github:nixos/nixpkgs/haskell-updates";
     flake-utils.url = "github:numtide/flake-utils";
     nix-github-actions.url = "github:nix-community/nix-github-actions";
     nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-stable";
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     let
-      systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      systems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
     in
-    (inputs.flake-utils.lib.eachSystem systems (system:
-      rec {
-        packages = import ./packages.nix { inherit inputs system; };
-        lib = import ./lib.nix { inherit inputs system packages; };
-        checks = import ./checks.nix { inherit inputs system packages lib; };
-      })
-    ) // {
+    (inputs.flake-utils.lib.eachSystem systems (system: rec {
+      packages = import ./packages.nix { inherit inputs system; };
+      lib = import ./lib.nix { inherit inputs system packages; };
+      checks = import ./checks.nix {
+        inherit
+          inputs
+          system
+          packages
+          lib
+          ;
+      };
+    }))
+    // {
       nixosModules = import ./nixos-modules.nix { inherit inputs; };
       githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
         checks = inputs.nixpkgs-stable.lib.getAttrs systems inputs.self.checks;
@@ -42,11 +54,7 @@
       };
     };
   nixConfig = {
-    extra-substituters = [
-      "https://freckle.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "freckle.cachix.org-1:WnI1pZdwLf2vnP9Fx7OGbVSREqqi4HM2OhNjYmZ7odo="
-    ];
+    extra-substituters = [ "https://freckle.cachix.org" ];
+    extra-trusted-public-keys = [ "freckle.cachix.org-1:WnI1pZdwLf2vnP9Fx7OGbVSREqqi4HM2OhNjYmZ7odo=" ];
   };
 }
