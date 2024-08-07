@@ -1,11 +1,19 @@
 { inputs, system }:
 let
-  nixpkgs = import inputs.nixpkgs-stable { inherit system; config = { }; };
-  inherit (nixpkgs) fetchFromGitHub mkYarnPackage fetchYarnDeps nodejs makeWrapper;
+  nixpkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config = { };
+  };
+  inherit (nixpkgs)
+    fetchFromGitHub
+    mkYarnPackage
+    fetchYarnDeps
+    nodejs
+    makeWrapper
+    ;
 in
 {
-  locize-cli-8-0-1 = mkYarnPackage rec
-  {
+  locize-cli-8-0-1 = mkYarnPackage rec {
     pname = "locize-cli";
     version = "8.0.1";
     src = fetchFromGitHub {
