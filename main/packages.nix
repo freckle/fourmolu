@@ -10,6 +10,7 @@ let
     ./locize-cli/packages.nix
     ./nodejs/packages.nix
     ./prettier/packages.nix
+    ./stack-lint-extra-deps/packages.nix
   ];
   packages =
     flattenAttrs

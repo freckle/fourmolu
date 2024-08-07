@@ -10,6 +10,7 @@ let
     ./locize-cli/checks.nix
     ./nodejs/checks.nix
     ./prettier/checks.nix
+    ./stack-lint-extra-deps/checks.nix
   ];
 in
 flattenAttrs (
