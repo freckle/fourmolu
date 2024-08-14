@@ -26,6 +26,7 @@
     {
       cypress-13-2-0 = versionCheck "13.2.0" packages.cypress-13-2-0;
       cypress-13-6-4 = versionCheck "13.6.4" packages.cypress-13-6-4;
+      cypress-13-13-3 = versionCheck "13.13.3" packages.cypress-13-13-3;
     };
 }
 .${system} or { }
