@@ -2,7 +2,7 @@ name: Update flake inputs
 
 on:
   schedule:
-    - cron: "* * * * 6"
+    - cron: "0 0 * * 6"
 
 defaults:
   run:
