@@ -16,10 +16,18 @@ jobs:
       - uses: cachix/install-nix-action@v26
       - name: Update
         run: nix flake update
+
+      # Use a PAT so that Workflows run on the created PR
+      - id: token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.FRECKLE_AUTOMATION_APP_ID }}
+          private-key: ${{ secrets.FRECKLE_AUTOMATION_APP_PRIVATE_KEY }}
+
       - uses: peter-evans/create-pull-request@v6
         with:
           branch: gh/update
           title: Update flake inputs
           body: |
             Automatic run of `nix flake update`.
-          token: ${{ secrets.FRECKLE_AUTOMATION_GITHUB_TOKEN }}
+          token: ${{ steps.token.outputs.token }}
