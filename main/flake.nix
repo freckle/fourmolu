@@ -17,6 +17,7 @@
     nixpkgs-unstable-2024-07-29.url = "github:nixos/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
     stack-lint-extra-deps.url = "github:freckle/stack-lint-extra-deps";
     nixpkgs-haskell-updates.url = "github:nixos/nixpkgs/haskell-updates";
+    static-ls.url = "github:josephsumabat/static-ls";
     flake-utils.url = "github:numtide/flake-utils";
     nix-github-actions.url = "github:nix-community/nix-github-actions";
     nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-stable";

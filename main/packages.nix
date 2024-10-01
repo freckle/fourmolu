@@ -14,6 +14,7 @@ let
     ./nodejs/packages.nix
     ./prettier/packages.nix
     ./stack-lint-extra-deps/packages.nix
+    ./static-ls/packages.nix
   ];
   packages = flattenAttrs (
     nixpkgs.lib.lists.map (file: import file { inherit inputs packages system; }) files

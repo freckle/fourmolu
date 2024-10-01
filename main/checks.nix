@@ -19,6 +19,7 @@ let
     ./nodejs/checks.nix
     ./prettier/checks.nix
     ./stack-lint-extra-deps/checks.nix
+    ./static-ls/checks.nix
   ];
 in
 flattenAttrs (
