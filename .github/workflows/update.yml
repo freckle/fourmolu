@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v26
       - name: Update
-        run: nix flake update
+        run: nix flake update --accept-flake-config
 
       # Use a PAT so that Workflows run on the created PR
       - id: token
