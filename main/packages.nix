@@ -10,6 +10,7 @@ let
     ./cypress/packages.nix
     ./fourmolu/packages.nix
     ./ghc/packages.nix
+    ./haskell-openapi3-code-generator/packages.nix
     ./locize-cli/packages.nix
     ./nodejs/packages.nix
     ./prettier/packages.nix

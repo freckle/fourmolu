@@ -15,6 +15,7 @@ let
     ./cypress/checks.nix
     ./fourmolu/checks.nix
     ./ghc/checks.nix
+    ./haskell-openapi3-code-generator/checks.nix
     ./locize-cli/checks.nix
     ./nodejs/checks.nix
     ./prettier/checks.nix
