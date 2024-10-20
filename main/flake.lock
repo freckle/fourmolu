@@ -294,6 +294,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master-2024-10-19": {
+      "locked": {
+        "lastModified": 1729399009,
+        "narHash": "sha256-mZXm1ka9mKh5L9Cu3rDvSwu0SEclA4tRcINI2SrIl1I=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "67f803dcf82ebe958a53fcfa7c1edb276558c3f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "67f803dcf82ebe958a53fcfa7c1edb276558c3f6",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1720386169,
@@ -505,6 +521,7 @@
         "nixpkgs-master-2023-07-18": "nixpkgs-master-2023-07-18",
         "nixpkgs-master-2023-09-15": "nixpkgs-master-2023-09-15",
         "nixpkgs-master-2024-01-27": "nixpkgs-master-2024-01-27",
+        "nixpkgs-master-2024-10-19": "nixpkgs-master-2024-10-19",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-stable-2023-07-25": "nixpkgs-stable-2023-07-25",
         "nixpkgs-unstable-2023-10-21": "nixpkgs-unstable-2023-10-21",
