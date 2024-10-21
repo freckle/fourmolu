@@ -132,5 +132,6 @@ in
   ghc-9-10-1 = ghcCheck {
     packageName = "ghc-9-10-1";
     ghc = "9.10.1";
+    hls = "2.9.0.0";
   };
 }
