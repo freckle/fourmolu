@@ -588,11 +588,11 @@
         "stacklock2nix": "stacklock2nix"
       },
       "locked": {
-        "lastModified": 1733248690,
-        "narHash": "sha256-vFOvU7+eOdNu94VuYK7Gor4OH4LWSwII5dwJ4qRrf8g=",
+        "lastModified": 1733313314,
+        "narHash": "sha256-9HAmABc+lYe2HnYdcMh/x/UTlmq36km3cvqMPAdZkfg=",
         "owner": "freckle",
         "repo": "stack-lint-extra-deps",
-        "rev": "2f045f362c27eaf143144f5477dcead8fc4a04bf",
+        "rev": "18bb6cade3ebc8c5b0aca38da75f5c717fa2d467",
         "type": "github"
       },
       "original": {
