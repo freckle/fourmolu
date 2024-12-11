@@ -53,7 +53,7 @@ in
   ghc-9-2-8 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
