@@ -296,7 +296,7 @@ in
   ghc-9-8-1 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
@@ -323,7 +323,7 @@ in
   ghc-9-8-2 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
@@ -390,7 +390,7 @@ in
       hls = nixpkgs.haskell-language-server.override { supportedGhcVersions = [ "984" ]; };
       cabal = nixpkgs.cabal-install;
       stack = import ./stack.nix {
-        nixpkgs = import inputs.nixpkgs-stable {
+        nixpkgs = import inputs.nixpkgs-24-11 {
           inherit system;
           config = { };
         };
@@ -409,7 +409,7 @@ in
   ghc-9-10-1 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-master-2024-10-19 {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
