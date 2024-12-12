@@ -188,7 +188,7 @@ in
   ghc-9-6-3 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
@@ -215,7 +215,7 @@ in
   ghc-9-6-4 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
@@ -242,7 +242,7 @@ in
   ghc-9-6-5 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-stable {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
@@ -269,7 +269,7 @@ in
   ghc-9-6-6 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-07-29 {
+      nixpkgs = import inputs.nixpkgs-24-11 {
         inherit system;
         config = { };
       };
