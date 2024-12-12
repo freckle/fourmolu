@@ -101,11 +101,11 @@
         "validity": "validity"
       },
       "locked": {
-        "lastModified": 1723367996,
-        "narHash": "sha256-maI3mrsCCt+su8PBuLmVtznwyaR8e4xKGgmu7qKW6l8=",
+        "lastModified": 1731515792,
+        "narHash": "sha256-EoU807Pqii6hnLvXIu8G2fDOyKLBrOSesXsEEh3YoZQ=",
         "owner": "Haskell-OpenAPI-Code-Generator",
         "repo": "Haskell-OpenAPI-Client-Code-Generator",
-        "rev": "3ab804875a272cf51b9faeab04c2f7afd2628a25",
+        "rev": "0eb15be1a8ae9c311e727e300e7564bf2eb7096f",
         "type": "github"
       },
       "original": {
