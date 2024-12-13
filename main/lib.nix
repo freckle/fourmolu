@@ -4,10 +4,7 @@
   system,
 }:
 let
-  nixpkgs = import inputs.nixpkgs-stable {
-    inherit system;
-    config = { };
-  };
+  nixpkgs = inputs.nixpkgs-stable.legacyPackages.${system};
   flattenAttrs = nixpkgs.lib.lists.foldl' (a: b: a // b) { };
   files = [ ./ghc/lib.nix ];
 in

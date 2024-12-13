@@ -1,13 +1,7 @@
 { inputs, system, ... }:
 let
-  inherit
-    (import inputs.nixpkgs-stable {
-      inherit system;
-      config = { };
-    })
-    symlinkJoin
-    runCommand
-    ;
+  inherit (builtins) getFlake;
+  inherit (inputs.nixpkgs-stable.legacyPackages.${system}) symlinkJoin runCommand;
 in
 rec {
   nodejs-16-x = nodejs-16-20-x;
@@ -15,10 +9,8 @@ rec {
 
   nodejs-16-20-0 = (
     let
-      nixpkgs = import inputs.nixpkgs-master-2023-05-06 {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = # 2023-05-06
+        (getFlake "github:nixos/nixpkgs/16b3b0c53b1ee8936739f8c588544e7fcec3fc60").legacyPackages.${system};
       nodejs = nixpkgs.nodejs_16;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
@@ -41,12 +33,8 @@ rec {
 
   nodejs-16-20-1 = (
     let
-      nixpkgs = import inputs.nixpkgs-master-2023-07-18 {
-        inherit system;
-        config = {
-          permittedInsecurePackages = [ "nodejs-16.20.1" ];
-        };
-      };
+      nixpkgs = # 2023-07-18
+        (getFlake "github:nixos/nixpkgs/08700de174bc6235043cb4263b643b721d936bdb").legacyPackages.${system};
       nodejs = nixpkgs.nodejs_16;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
@@ -69,12 +57,7 @@ rec {
 
   nodejs-16-20-2 = (
     let
-      nixpkgs = import inputs.nixpkgs-23-05 {
-        inherit system;
-        config = {
-          permittedInsecurePackages = [ "nodejs-16.20.2" ];
-        };
-      };
+      nixpkgs = inputs.nixpkgs-23-05.legacyPackages.${system};
       nodejs = nixpkgs.nodejs_16;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };

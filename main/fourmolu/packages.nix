@@ -5,14 +5,14 @@
   ...
 }:
 let
+  inherit (builtins) getFlake;
+
   versions = v0-13 // v0-14 // v0-16 // { fourmolu-default = versions.fourmolu-0-13-x; };
 
   v0-13 =
     let
-      nixpkgs = import inputs.nixpkgs-stable-2023-07-25 {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = # 2023-07-25
+        (getFlake "github:nixos/nixpkgs/6dc93f0daec55ee2f441da385aaf143863e3d671").legacyPackages.${system};
       inherit (nixpkgs) haskell;
       inherit (haskell.lib) justStaticExecutables overrideCabal;
     in
@@ -46,10 +46,7 @@ let
 
   v0-14 =
     let
-      nixpkgs = import inputs.nixpkgs-stable {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = inputs.nixpkgs-stable.legacyPackages.${system};
       inherit (nixpkgs) haskell;
       inherit (haskell.lib) justStaticExecutables overrideCabal;
     in
@@ -71,10 +68,7 @@ let
 
   v0-16 =
     let
-      nixpkgs = import inputs.nixpkgs-24-11 {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = inputs.nixpkgs-24-11.legacyPackages.${system};
       inherit (nixpkgs) haskell;
       inherit (haskell.lib) justStaticExecutables overrideCabal;
     in

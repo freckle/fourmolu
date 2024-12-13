@@ -1,6 +1,6 @@
 { inputs, system, ... }:
 let
-  nixpkgs = import inputs.nixpkgs-24-11 { inherit system; };
+  nixpkgs = inputs.nixpkgs-24-11.legacyPackages.${system};
   inherit (nixpkgs.haskell.lib) justStaticExecutables;
   inherit (builtins) getFlake;
 in

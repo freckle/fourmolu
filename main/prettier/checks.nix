@@ -5,10 +5,7 @@
   ...
 }:
 let
-  nixpkgs = import inputs.nixpkgs-stable {
-    inherit system;
-    config = { };
-  };
+  nixpkgs = inputs.nixpkgs-stable.legacyPackages.${system};
   inherit (nixpkgs) writeText runCommand;
   inherit (nixpkgs.lib.attrsets) recursiveUpdate;
   inherit (nixpkgs.testers) testEqualContents;

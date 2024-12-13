@@ -1,13 +1,7 @@
 { inputs, system, ... }:
 let
-  inherit
-    (import inputs.nixpkgs-stable {
-      inherit system;
-      config = { };
-    })
-    symlinkJoin
-    runCommand
-    ;
+  inherit (builtins) getFlake;
+  inherit (inputs.nixpkgs-stable.legacyPackages.${system}) symlinkJoin runCommand;
 in
 rec {
   nodejs-20-x = nodejs-20-11-x;
@@ -16,10 +10,8 @@ rec {
 
   nodejs-20-11-0 = (
     let
-      nixpkgs = import inputs.nixpkgs-master-2024-01-27 {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = # 2024-01-27
+        (getFlake "github:nixos/nixpkgs/160b762eda6d139ac10ae081f8f78d640dd523eb").legacyPackages.${system};
       nodejs = nixpkgs.nodejs_20;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
@@ -42,10 +34,8 @@ rec {
 
   nodejs-20-11-1 = (
     let
-      nixpkgs = import inputs.nixpkgs-unstable-2024-02-20 {
-        inherit system;
-        config = { };
-      };
+      nixpkgs = # 2024-02-20
+        (getFlake "github:nixos/nixpkgs/b98a4e1746acceb92c509bc496ef3d0e5ad8d4aa").legacyPackages.${system};
       nodejs = nixpkgs.nodejs_20;
       yarn = nixpkgs.yarn.override { inherit nodejs; };
       pnpm = nixpkgs.nodePackages.pnpm.override { inherit nodejs; };
