@@ -136,6 +136,7 @@ in
     packageName = "ghc-9-8-4";
     ghc = "9.8.4";
     weeder = "2.9.0";
+    hls = "2.9.0.0";
   };
   ghc-9-10-1 = ghcCheck {
     packageName = "ghc-9-10-1";
