@@ -246,6 +246,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-haskell-updates_2": {
+      "locked": {
+        "lastModified": 1736295319,
+        "narHash": "sha256-D408QVHL43RPYdPnGhTpBHJs4wVIebbsmh/SAAY0vAE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b6b38bb0649cb8393492949e01b1e331c3a05718",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "haskell-updates",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1720386169,
@@ -296,16 +312,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1733756863,
-        "narHash": "sha256-gbivEqdl62NnnESKvRiUR+GRhCGrf1mUoNtGl/yYu4k=",
+        "lastModified": 1736200483,
+        "narHash": "sha256-JO+lFN2HsCwSLMUWXHeOad6QUxOuwe9UOAF/iSl1J4I=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "06886d32c517d0e199c0e6d345d54673acc55453",
+        "rev": "3f0a8ac25fb674611b98089ca3a5dd6480175751",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "haskell-updates",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -381,15 +397,16 @@
     "stack-lint-extra-deps": {
       "inputs": {
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-haskell-updates": "nixpkgs-haskell-updates_2",
         "pgp-wordlist": "pgp-wordlist",
         "stacklock2nix": "stacklock2nix"
       },
       "locked": {
-        "lastModified": 1734039705,
-        "narHash": "sha256-fM6/erR1M+QA0XJ09IrncP4e+HbKkkVNBPuzcFirYY0=",
+        "lastModified": 1736375257,
+        "narHash": "sha256-VYW4F4CiPf9uz9gmVRTz+7ezsmbjvedpghqWJFZMsWs=",
         "owner": "freckle",
         "repo": "stack-lint-extra-deps",
-        "rev": "a5a2596ad473fb330b6fa3b89e28f3f1254df0d6",
+        "rev": "fcc40250aafd291eafac4c21510b0337ab5e913b",
         "type": "github"
       },
       "original": {
