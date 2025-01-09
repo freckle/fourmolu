@@ -10,7 +10,7 @@
     nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-24-11.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-haskell-updates.url = "github:nixos/nixpkgs/haskell-updates";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     stack-lint-extra-deps.url = "github:freckle/stack-lint-extra-deps";
   };
   outputs =
