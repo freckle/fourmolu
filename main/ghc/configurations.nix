@@ -2,7 +2,7 @@
 let
   inherit (builtins) getFlake;
 
-  inherit (inputs.nixpkgs-stable.legacyPackages.${system}) symlinkJoin;
+  inherit (inputs.nixpkgs-24-05.legacyPackages.${system}) symlinkJoin;
 
   addPatches = patches: prev: { patches = (prev.patches or [ ]) ++ patches; };
 

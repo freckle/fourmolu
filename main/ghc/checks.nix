@@ -6,11 +6,11 @@
   ...
 }:
 let
-  nixpkgs = inputs.nixpkgs-stable.legacyPackages.${system};
+  nixpkgs = inputs.nixpkgs-24-05.legacyPackages.${system};
   inherit (nixpkgs) writeText runCommand;
   inherit (nixpkgs.lib.attrsets) recursiveUpdate;
   inherit (nixpkgs.testers) testEqualContents;
-  inherit (inputs.nixpkgs-stable.lib) optionalString concatLines;
+  inherit (inputs.nixpkgs-24-05.lib) optionalString concatLines;
 
   ghcCheck =
     {

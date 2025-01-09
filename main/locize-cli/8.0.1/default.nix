@@ -1,6 +1,6 @@
 { inputs, system }:
 let
-  nixpkgs = inputs.nixpkgs-stable.legacyPackages.${system};
+  nixpkgs = inputs.nixpkgs-24-05.legacyPackages.${system};
   inherit (nixpkgs)
     fetchFromGitHub
     mkYarnPackage
