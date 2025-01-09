@@ -339,7 +339,8 @@ in
   ghc-9-8-4 =
     { packageSelection, enableHLS }:
     let
-      nixpkgs = inputs.nixpkgs-haskell-updates.legacyPackages.${system};
+      nixpkgs = # 2025-01-03
+        (getFlake "github:nixos/nixpkgs/d3780c92e64472e8f9aa54f7bbb0dd4483b98303").legacyPackages.${system};
       name = "ghc984";
       inherit (nixpkgs) haskell;
       haskellPackages = haskell.packages.${name};
