@@ -13,5 +13,5 @@ rec {
   prettier-3-0-3 = inputs.nixpkgs-23-11.legacyPackages.${system}.nodePackages.prettier;
 
   prettier-3-2-x = prettier-3-2-5;
-  prettier-3-2-5 = inputs.nixpkgs-stable.legacyPackages.${system}.nodePackages.prettier;
+  prettier-3-2-5 = inputs.nixpkgs-24-05.legacyPackages.${system}.nodePackages.prettier;
 }
