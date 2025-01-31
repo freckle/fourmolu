@@ -7,7 +7,14 @@
 let
   inherit (builtins) getFlake;
 
-  versions = v0-13 // v0-14 // v0-16 // { fourmolu-default = versions.fourmolu-0-13-x; };
+  versions =
+    v0-13
+    // v0-14
+    // v0-16
+    // v0-17
+    // {
+      fourmolu-default = versions.fourmolu-0-17-x;
+    };
 
   v0-13 =
     let
@@ -77,10 +84,32 @@ let
 
       fourmolu-0-16-2 =
         justStaticExecutables
-          (haskell.packages.ghc9101.override {
+          (haskell.packages.ghc910.override {
             overrides = self: super: {
               fourmolu =
                 overrideCabal (super.callPackage ./haskell-packages/fourmolu-0.16.2.cabal.nix { })
+                  (drv: {
+                    doCheck = false;
+                  });
+            };
+          }).fourmolu;
+    };
+
+  v0-17 =
+    let
+      nixpkgs = inputs.nixpkgs-24-11.legacyPackages.${system};
+      inherit (nixpkgs) haskell;
+      inherit (haskell.lib) justStaticExecutables overrideCabal;
+    in
+    rec {
+      fourmolu-0-17-x = fourmolu-0-17-0;
+
+      fourmolu-0-17-0 =
+        justStaticExecutables
+          (haskell.packages.ghc910.override {
+            overrides = self: super: {
+              fourmolu =
+                overrideCabal (super.callPackage ./haskell-packages/fourmolu-0.17.0.cabal.nix { })
                   (drv: {
                     doCheck = false;
                   });
