@@ -28,4 +28,5 @@ in
   fourmolu-0-13-1 = versionCheck "0.13.1" packages.fourmolu-0-13-1;
   fourmolu-0-14-0 = versionCheck "0.14.0" packages.fourmolu-0-14-0;
   fourmolu-0-16-2 = versionCheck "0.16.2" packages.fourmolu-0-16-2;
+  fourmolu-0-17-0 = versionCheck "0.17.0" packages.fourmolu-0-17-0;
 }
